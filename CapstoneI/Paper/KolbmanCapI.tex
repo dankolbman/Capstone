@@ -55,7 +55,7 @@ This property has been found to affect the migration of cancer cells in the vici
 A simple model of two dimensional homogeneous monolayers of cells  consists of interacting colloidal particles that are also each active, i.e. self-driven \cite{FilyMarchetti,RednerBaskaran}. 
 Such models have been previously used to study swarming  behavior \cite{Vicsek} in birds, inspections and fish.
 Our group has recently combined this approach with cell mechanics and applied it to a binary population of cells, to study the collective mechanics and dynamics in cell co-cultures characterized by a difference in cell stiffness.
-Co-cultures are a valuable system to study early cancer progression, because during this process two cell populations, namely healthy cells and cells that have become cancerous may be in intermixed.   
+Co-cultures are a valuable system to study early cancer progression, because during this process two cell populations, namely healthy cells and cells that have become cancerous may be intermixed.   
 This study found that mechanical mismatch in co-cultures can have important consequences cell migration, and can lead to enhanced motility for more deformable cells\cite{Butcher}, in agreement with
 the Lee and coworkers \cite{Lee}. 
 
@@ -73,7 +73,7 @@ The main ingredients of the model are discussed below.
 \item {\bf Co-culture Systems: mechanical stiffness and cell-cell adhesion of cancer cells vs healthy cells}\\
 The co-culture environment is a vital component to the migration of cell migration \cite{Miki}.
 In several biological processes from the formation of embryos to the formation of tumors, cells of different types lie and move next to each other.
-In laboratory experiments, when introduced to a monolayer of healthy cells, carcinoma cells have been observed to have higher migration rates than when in a monolayer of other carcinoma cells \cite{Lee}.
+In laboratory experiments, when introduced to a monolayer of healthy cells, cancerous cells have been observed to have higher migration rates than when in a monolayer of other cancerous cells \cite{Lee}.
 In addition to the difference in stiffness \cite{Lee}, the adhesion properties of cancer cells have also been found to be drastically different from that of non-cancerous cells\cite{Jeanes}.
 Most healthy cells adhere to each other via the protein E-cadherin when they come in contact, and also tend to anchor to the surrounding matrix.
 Cancer cells lack this adhesiveness.
@@ -115,7 +115,7 @@ important in the development of our three-dimensional model.
 
 \section*{Model}
 
-We will study the collective dynamics of this system using an active Brownian Dynamics simulation.
+We study the collective dynamics of this system using an active Brownian Dynamics simulation.
 Brownian dynamics is ideal for this system
 as cells behave like Brownian particles: their dimensions and times scale of motion are much larger than that of the particles of the surrounding  medium in which they are suspended and in equilibrium  their motion is diffusive.
 This motion is described by the ``over-damped" Langevin equations, i.e. the inertial or acceleration term is $zero$.
@@ -132,6 +132,7 @@ Where $F$ is the total force on the cell and $r_m$ is its position.
 This force includes contribution from cell elasticity,
 cell-cell adhesion, cell-matrix adhesion and active forces.
 The constant $\gamma$ is the damping coefficient of the fluid used and $\eta$ is a fluctuating force to approximate collisions with smaller particles and follows the fluctuation dissipation theorem:
+
 \begin{equation}
 \left\langle \eta(t)\eta(t')\right\rangle = 0 
 \end{equation}
@@ -141,7 +142,44 @@ The constant $\gamma$ is the damping coefficient of the fluid used and $\eta$ is
 \end{equation}
 
 The above active overdamped Langevin equation \cite{RednerBaskaran,FilyMarchetti} has already been used in the study of binary active colloids in $2D$ \cite{Butcher}. 
-We will begin by extending the $2D$ co-culture system to $3D$, then modify and add other model ingredients.
+We have extended the $2D$ co-culture system to confined system in $3D$.
+
+
+% Interaction forces %
+The interaction forces are important for investigating how the elasticity and adhesivity of cells affects their migration and segregation. We have modeled the stiffness of the cells using a simple Hookean spring force while we use a `V' well to model the adhesion (See FIG. \ref{fig:interaction}). The result is particles that will desire to be close together, while resisting overlap. The repulsive and adhesive forces take the forms:
+
+\begin{equation}
+  F_{rep}(r) = \left\{
+    \begin{array}{lr}
+      1-\frac{r}{\sigma} &, r < 0\\
+      0 &, r \ge \sigma
+    \end{array}
+  \right.
+  \label{eq:frep}
+\end{equation}
+
+\begin{equation}
+  F_{adh}(r) = \left\{
+    \begin{array}{lr}
+      0 &, r \le \sigma \\
+      |r - (\sigma+\epsilon)|/\epsilon-1 &, \sigma < r < \sigma+2\epsilon
+    \end{array}
+  \right.
+  \label{eq:fadh}
+\end{equation}
+
+To investigate the affects of mismatches in elasticity and adhesion, we normalize the magnitude the extremes of the forces to one and then multiply by a prefactor that is dependent on the species of the particle. We denote these as $k_{rep}$ and $k_{adh}$ for the repulsive and adhesive prefactors, respectively.
+
+\begin{figure}
+  \includegraphics[width=1.0\columnwidth]{interaction.png}
+  \caption[capsuleECM]{The two part interaction potential. For small separations
+    within the diameter of the cells, there is a hookean, repulsive force. Separations
+    outside, but near the cell, experience an adhesive force.}
+   \label{fig:interaction}
+\end{figure}
+
+% Propulsion %
+
 
 \begin{figure}
   \includegraphics[width=3in]{Fig2.png}
@@ -149,6 +187,17 @@ We will begin by extending the $2D$ co-culture system to $3D$, then modify and a
    {A cross section of a spherical capsule enclosing a binary mixture of 
    cells and an extracellular matrix.}
    \label{fig:capsuleECM}
+\end{figure}
+
+
+% Boundary Conditions %
+We have imposed `hard' barrier boundaries on the system to immitate the conditions of microfluidic drops. This means that particles may move along or within a specified radius, but are restricted from moving outside of it.
+
+\begin{figure}
+  \includegraphics[width=1.0\columnwidth]{3dconf.png}
+  \caption[3dconf]
+    { A sample configuration of a 3D co-culture system.}
+   \label{fig:3dconf}
 \end{figure}
 
 First, the previously used periodic boundary conditions will need to be made into spherically confined boundaries.
@@ -162,37 +211,24 @@ There are further corrections that are hard to measure experimentally, but we ca
 These are factors such as varying ECM density, cell-cell adhesion, and self propulsion speed of cells.
 These additions will help to predict situations not yet studied experimentally and suggest areas for further development in experimental techniques. The successful accomplishment of our goals will provide
 new insights for cancer cell migration in $3D$.
-\vspace{0.0in}
-\section*{Budget}
-\begin{itemize}\itemsep1pt \parskip0pt
-\item \$100 - Textbooks, journal articles
-\item \$150 - Travel
-\item \$50 - Software Licenses
-\end{itemize}
 
-\section*{Goals and Timeline}
+\section*{Preliminary Results}
 
-{\bf Capstone I}
-\begin{itemize}\itemsep1pt \parskip0pt 
-\item Brownian Dynamics for One Species Model in $3D$, with confined boundary conditions to mimic a spherical $3D$ capsule (4 weeks).
-\item Extend to binary System, with different stiffness for two the two cell types. (3 weeks)
-\item Add differential cell-cell adhesion for the two cell types. (3 weeks) 
-\item Collect Data, Analyze Results (3 weeks)
-\item Examine physical and biological implications of results, present results obtained so far 
-at local conference, write paper, talk (2 weeks)
-\end{itemize}
-{\bf Capstone II} 
-\begin{itemize}\itemsep1pt \parskip0pt
-\item Apply experimental values for the inputs to the model, identify physiologically relevant regimes of parameters
-and compare results of model thus far with control experiments in collaboration with Drs. Wu and Ma at Cornell. (2 weeks) 
-\item Add extra cellular matrix in the form of a disordered weakly attractive potential. (4 weeks) 
-\item Add self propulsion forces.(2 weeks)
-\item Obtain results and analyze and interpreted  data. (2 weeks)
-\item Attend March Meeting and present results (1 week)
-\item Calculate phase diagram of aggregation and migration speed in terms of differential 
-cell stiff, cell-cell adhesion, cell-matrix adhesion using experimentally relevant parameters. (2 weeks)
- \item Compare final results with experiments  write paper, give talk. (2 weeks)
-\end{itemize}
+
+\section*{Future Goals}
+
+\begin{figure*}
+  \includegraphics[width=\textwidth]{experimental.png}
+  \caption[experimental]
+    {Experimental results we aim to simulate using our model.(a) A schematic of an ECM-supported microcapsule. (b) MDA-MB-231 cells with tomato red expression encapsulated within collagen matrix in the alginate microcapsules. (c) A magnified view of a single microcapsule. (d) Cells in the collagen fibers (green) in the inner layer of a microcapsule as imaged by second harmonic generation microscopy. (e-h) Cell segregation under 3D confinement: MDA-MB-231 (with red Tomato fluorescence) and MCF-10A cells.
+Experimental collaboration: M. Wu and M. Ma, Cornell University}
+   \label{fig:experimental}
+\end{figure}
+
+We have constructed a basic model to simulate the mechanics of a co-culture system. During the next semester, we plan to work closely with experimental data under physical parameters. We will focus on adding a few more components to our model that may be important to the roles of segregation and migration and what is being observed in the laboratory.
+We will add an ECM, an important aspect that is present in the microcapsules, as a disordered potential.
+The additional consideration of mitosis is another facet that may be important to the behavior of segregation. The division of cells may be important to the overall action of the system, particularly at the time scales that these effects are measured at. The difference in the rate of division between cancerous and healthy cells will also be an important aspect of mitosis and its contribution to the co-culture system.
+Finally, we hope to improve the 
 
 \begin{acknowledgments}
 Greatest thanks to: Dr. Moumita Das for her mentorship and assistance, Julian Butcher for his work in soft active colloids, Drs. Minglin Ma and Mingming Wu for their anticipated collaboration and experimental results, and Dr. Linda Barton for her arranging of Capstone Preparation.
