@@ -4,6 +4,8 @@
 \usepackage{graphics}
 \usepackage{epsfig}
 \usepackage{caption}
+\usepackage{amsmath}
+\usepackage{bm}
 
 %\setlength{\skip\footins}{0.3in}
 \begin{document}
@@ -101,8 +103,6 @@ The outside of this layer is coated such that cells will not adhere to this laye
    \label{fig:capsule}
 \end{figure}
 
-
-
 \item{\bf Interaction with the extra cellular matrix}\\
 The ECM is a structural network of fibers that interact with the contained 
 cells \cite{Alberts}. Healthy cells adhere to the ECM and move along it in
@@ -125,13 +125,21 @@ In addition our system is ``active" because cells can generate their own forces 
 The overdamped Langevin equation of a representative cell is as follows\cite{Lemons}: 
 
 \begin{equation}
-F(r _m) - \gamma \frac{dr_m}{dt} + \eta(t) = 0
+  \bm{\dot{r}} = \frac{1}{\gamma}\bm{F}_{int}(\bm{r}) + v_p\hat{\bm{v}}_i+\sqrt{2D}\eta^T
 \end{equation}
 
-Where $F$ is the total force on the cell and $r_m$ is its position.
-This force includes contribution from cell elasticity,
-cell-cell adhesion, cell-matrix adhesion and active forces.
-The constant $\gamma$ is the damping coefficient of the fluid used and $\eta$ is a fluctuating force to approximate collisions with smaller particles and follows the fluctuation dissipation theorem:
+\begin{equation}
+  \dot{\theta}_i=\sqrt{2D_r}\eta^R_i
+\end{equation}
+
+Where $F_{int}$ is the interaction forces on the cell from adhesion and repulsion.
+$\bm{r}_i$ and $\dot{\bm{r}}_i$ is the position and velocity of the i\textit{th} particle, respectively.
+The constant $\gamma$ is the damping coefficient of the fluid used. It is related to the
+diffusion constant, $D$, by $D=\frac{k_BT}{\gamma}$. $v_p$ is the magnitude of propulsion
+and $\bm{\hat{v}}_i$ is the direction of propulsion, $\bm{\hat{v}}=(cos\theta_i, sin\theta_i)$.
+$\eta^T$ is the translational noise to approximate collisions with smaller particles.
+$\eta^R$ is the rotational noise to simulate change in the direction of travel 
+from ATP use. Both noise variables follow the fluctuation dissipation theorem:
 
 \begin{equation}
 \left\langle \eta(t)\eta(t')\right\rangle = 0 
@@ -141,11 +149,18 @@ The constant $\gamma$ is the damping coefficient of the fluid used and $\eta$ is
 \delta(t-t')
 \end{equation}
 
+% Dimension stuff %
+
+We define $k_BT$ and $\sigma$ to be our units of energy and length and define 
+unit time as $\tau = \frac{\sigma^2}{D}$.
+
 The above active overdamped Langevin equation \cite{RednerBaskaran,FilyMarchetti} has already been used in the study of binary active colloids in $2D$ \cite{Butcher}. 
 We have extended the $2D$ co-culture system to confined system in $3D$.
 
 
 % Interaction forces %
+\subsection*{Interaction Forces}
+
 The interaction forces are important for investigating how the elasticity and adhesivity of cells affects their migration and segregation. We have modeled the stiffness of the cells using a simple Hookean spring force while we use a `V' well to model the adhesion (See FIG. \ref{fig:interaction}). The result is particles that will desire to be close together, while resisting overlap. The repulsive and adhesive forces take the forms:
 
 \begin{equation}
@@ -168,7 +183,7 @@ The interaction forces are important for investigating how the elasticity and ad
   \label{eq:fadh}
 \end{equation}
 
-To investigate the affects of mismatches in elasticity and adhesion, we normalize the magnitude the extremes of the forces to one and then multiply by a prefactor that is dependent on the species of the particle. We denote these as $k_{rep}$ and $k_{adh}$ for the repulsive and adhesive prefactors, respectively.
+To investigate the affects of mismatches in elasticity and adhesion, we normalize the magnitude of the extremes of the forces to one and then multiply by a prefactor that is dependent on the species of the particle. We denote these as $F^0_{rep}$ and $F^0_{adh}$ for the repulsive and adhesive prefactors, respectively.
 
 \begin{figure}
   \includegraphics[width=1.0\columnwidth]{interaction.png}
@@ -178,8 +193,47 @@ To investigate the affects of mismatches in elasticity and adhesion, we normaliz
    \label{fig:interaction}
 \end{figure}
 
-% Propulsion %
+% Physical system (Boundaries, packing fraction) %
 
+\subsection*{System Conditions}
+We have imposed `hard' barrier boundaries on the system to immitate the conditions
+of microfluidic drops. This means that particles may move along or within a
+specified radius, but are restricted from moving outside of it. 
+The size of the system is dependent on the packing fraction of the system. 
+For our simulations, we choose a packing fraction of $\phi=0.4$, which is where 
+active colloidal systems have been studied in the past\cite{RednerBaskaran}.
+See FIG. \ref{fig:3dconf} for a sample 3D system.
+
+\begin{figure}
+  \includegraphics[width=1.0\columnwidth]{3dconf.png}
+  \caption[3dconf]
+    {A sample configuration of a 3D co-culture system.}
+   \label{fig:3dconf}
+\end{figure}
+
+% Technical stuff %
+\subsection*{Numerical Methods}
+
+The dynamics simulations are computed in Julia, a high-performance, dynamic 
+programming language for scientific computing. Spatial cell hashing and neighbor 
+checking was used for broad phase collision detection to linearize run times 
+as a function of the number of total particles. The simulations use a foreward 
+Euler method to integrate with a time step of $10^{-6}\tau$. 
+Many identical runs for each  simulation were run repeatedly in parallel and 
+averaged together to produce data for a given set of parameters.
+
+\section*{Preliminary Results}
+
+\begin{widetext}
+\begin{figure*}
+  \includegraphics[width=\textwidth]{separation.png}
+  \caption[separation]
+    {Cancerous cells (Blue) separating over time (left to right)when immersed in healthy cells (Red)}
+   \label{fig:separation}
+\end{figure*}
+\end{widetext}
+
+\section*{Future Goals}
 
 \begin{figure}
   \includegraphics[width=3in]{Fig2.png}
@@ -189,46 +243,9 @@ To investigate the affects of mismatches in elasticity and adhesion, we normaliz
    \label{fig:capsuleECM}
 \end{figure}
 
-
-% Boundary Conditions %
-We have imposed `hard' barrier boundaries on the system to immitate the conditions of microfluidic drops. This means that particles may move along or within a specified radius, but are restricted from moving outside of it.
-
-\begin{figure}
-  \includegraphics[width=1.0\columnwidth]{3dconf.png}
-  \caption[3dconf]
-    { A sample configuration of a 3D co-culture system.}
-   \label{fig:3dconf}
-\end{figure}
-
-First, the previously used periodic boundary conditions will need to be made into spherically confined boundaries.
-This will be necessary to mimic the experiments we seek to model.
-We then look to incorporate co-cultures with different elastic and adhesive properties. 
-Finally, we will add a qualitative extra-cellular matrix (ECM) with constant stiffness and adhesion modeled as a disordered potential (See FIG. \ref{fig:capsuleECM}). 
-We will work closely with experimental results to calibrate parameters such as relative cell elasticity, diffusion constants of the cells, adhesion forces between cells and ECM, cell proportions, matrix stiffness, and system size.
-Our goal is to have a model consistent with experimental set-up which will allow us to compare with experimental results.
-
-There are further corrections that are hard to measure experimentally, but we can calculate their optimum values by using our simulations to closely imitate {\it in vivo} conditions. 
-These are factors such as varying ECM density, cell-cell adhesion, and self propulsion speed of cells.
-These additions will help to predict situations not yet studied experimentally and suggest areas for further development in experimental techniques. The successful accomplishment of our goals will provide
-new insights for cancer cell migration in $3D$.
-
-\section*{Preliminary Results}
-
-
-\section*{Future Goals}
-
-\begin{figure*}
-  \includegraphics[width=\textwidth]{experimental.png}
-  \caption[experimental]
-    {Experimental results we aim to simulate using our model.(a) A schematic of an ECM-supported microcapsule. (b) MDA-MB-231 cells with tomato red expression encapsulated within collagen matrix in the alginate microcapsules. (c) A magnified view of a single microcapsule. (d) Cells in the collagen fibers (green) in the inner layer of a microcapsule as imaged by second harmonic generation microscopy. (e-h) Cell segregation under 3D confinement: MDA-MB-231 (with red Tomato fluorescence) and MCF-10A cells.
-Experimental collaboration: M. Wu and M. Ma, Cornell University}
-   \label{fig:experimental}
-\end{figure}
-
 We have constructed a basic model to simulate the mechanics of a co-culture system. During the next semester, we plan to work closely with experimental data under physical parameters. We will focus on adding a few more components to our model that may be important to the roles of segregation and migration and what is being observed in the laboratory.
 We will add an ECM, an important aspect that is present in the microcapsules, as a disordered potential.
 The additional consideration of mitosis is another facet that may be important to the behavior of segregation. The division of cells may be important to the overall action of the system, particularly at the time scales that these effects are measured at. The difference in the rate of division between cancerous and healthy cells will also be an important aspect of mitosis and its contribution to the co-culture system.
-Finally, we hope to improve the 
 
 \begin{acknowledgments}
 Greatest thanks to: Dr. Moumita Das for her mentorship and assistance, Julian Butcher for his work in soft active colloids, Drs. Minglin Ma and Mingming Wu for their anticipated collaboration and experimental results, and Dr. Linda Barton for her arranging of Capstone Preparation.
