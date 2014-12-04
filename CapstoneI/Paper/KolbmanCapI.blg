@@ -3,44 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: KolbmanCapI.aux
 The style file: h-physrev5.bst.bst
 Database file #1: DanKolbmanBibliographyFile.bib
-You've used 14 entries,
+Warning--I didn't find a database entry for "mingming"
+You've used 12 entries,
             1973 wiz_defined-function locations,
-            725 strings with 7862 characters,
-and the built_in function-call counts, 3100 in all, are:
-= -- 198
-> -- 166
+            710 strings with 7470 characters,
+and the built_in function-call counts, 2643 in all, are:
+= -- 165
+> -- 150
 < -- 0
-+ -- 55
-- -- 37
-* -- 262
-:= -- 404
-add.period$ -- 14
-call.type$ -- 14
++ -- 49
+- -- 34
+* -- 226
+:= -- 349
+add.period$ -- 12
+call.type$ -- 12
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 149
-empty$ -- 321
-format.name$ -- 51
-if$ -- 730
+cite$ -- 12
+duplicate$ -- 127
+empty$ -- 271
+format.name$ -- 46
+if$ -- 619
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 15
-newline$ -- 61
-num.names$ -- 14
-pop$ -- 58
+int.to.str$ -- 12
+missing$ -- 13
+newline$ -- 52
+num.names$ -- 12
+pop$ -- 50
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 154
+skip$ -- 129
 stack$ -- 0
-substring$ -- 180
-swap$ -- 41
+substring$ -- 142
+swap$ -- 35
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 26
-width$ -- 16
-write$ -- 105
+while$ -- 22
+width$ -- 14
+write$ -- 89
+(There was 1 warning)
