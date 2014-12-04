@@ -197,6 +197,8 @@ The parameter $\epsilon$ is the phenomenological lengthscale over which the non-
 We have imposed `hard' barrier boundaries on the system to imitate the conditions
 of confining microfluidic shells used in the experiments \cite{mingming}. This means that particles may move along or within a
 specified radius, but are restricted from moving outside of it. 
+We begin each simulation by placing cells of each species randomly and in a 
+uniform manner inside of the spherical boundary.
 The size of the system is dependent on the packing fraction of the system. 
 For our simulations, we choose a packing fraction of $\phi=0.4$, which is where 
 active colloidal systems have been studied in the past\cite{RednerBaskaran}.
@@ -208,6 +210,15 @@ See FIG. \ref{fig:3dconf} for a sample 3D system.
     {A sample configuration of a 3D co-culture system.}
    \label{fig:3dconf}
 \end{figure}
+
+\begin{figure*}[t]
+  \includegraphics[width=\textwidth]{separation.png}
+  \caption[separation]
+    {Cancerous cells (Blue) when immersed in healthy cells (Red). The system
+    evolves (left to right) from an initial, random state (left) to a separated 
+state (right).}
+   \label{fig:separation}
+\end{figure*}
 
 % Technical stuff %
 \subsection*{Numerical Methods}
@@ -221,31 +232,56 @@ Many identical runs for each  simulation were run repeatedly in parallel and
 averaged together to produce data for a given set of parameters.
 
 \section*{Preliminary Results}
+\begin{figure}
+  \includegraphics[width=\columnwidth]{brownianMSD.png}
+  \caption[brownianMSD]
+    {MSD for a single species system under only brownian forces. The MSD
+      evolves nearly as $6Dt$ as expected from Einstein's theory of brownian motion.}
+  \label{fig:brownianMSD}
+\end{figure}
 
+% Brownian diffusion
+According to Einstein's theory of brownian motion, it is expected that the mean
+square displacement should evolve proportional to the time as $6D$. We used this fact to confirm that the dynamics of the simulation were working properly. To test this, all interaction and propulsive forces were turned off and the system was evolved only under brownian forces. Ten identical simulations were run and averaged to produce FIG. \ref{fig:brownianMSD}. The slope is very nearly the expected 
+value and will converge for larger numbers of trial runs.
+
+% Separation
 Experimentally, when cancerous cells are immersed in populations of healthy cells
 inside a microfluidic drop, the system experiences seperation behavior.The healthy 
 cells will group in the the center of drop while the cancerous cells will collect
-at the boundary. We are able to replicate this using our model.
+at the boundary. By using similiar parameters to those under experimental conditions,
+we are able to replicate this using our model.
+We use equal quantities of each species. The cancerous species having a repulsive
+intecation force an order of magnitude less than that of the healthy, as in 
+experimental conditions. The cancerous species also has a propulsive force and 
+no adhesive force. Cells of the healthy species have an adhesive force with no
+propulsive force. Under these conditions, we allow the system to evolve (See
+FIG. \ref{fig:separation}). The system separates from its initial (random) state
+so that the cancerous cells move toward the boundary.
 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{cocultureMSD.png}
+  \caption[cocultureMSD]
+    {The MSD for a co-culture, cancerous-healthy cell system. The cancerous cells
+    are observed to be much more motile than the healthy cells. This result is
+    similiar to those of the 2D case\cite{Butcher}.}
+  \label{fig:cocultureMSD}
+\end{figure}
 
-
-\begin{widetext}
-\begin{figure*}
-  \includegraphics[width=\textwidth]{separation.png}
-  \caption[separation]
-    {Cancerous cells (Blue) separating over time (left to right)when immersed in healthy cells (Red)}
-   \label{fig:separation}
-\end{figure*}
-\end{widetext}
+% Motility
+One case that was investigated closely in the 2D model was a co-culture system 
+with healthy, adhesive cells, and cancerous, propulsive cells with an elasticity 
+difference of one order. When simulated in 2D, the cancerous cells were much 
+more motile than the healthy cells. The same result is present in our 3D model 
+(See FIG. \ref{fig:cocultureMSD}).
 
 \section*{Future Goals}
-
 We have constructed a basic model to simulate the mechanics of a co-culture system. During the next semester, we plan to work closely with experimental data under physical parameters. We will focus on adding a few more components to our model that may be important to the roles of segregation and migration and what is being observed in the laboratory.
 We will add an ECM (See FIG. \ref{fig:capsuleECM}), an important aspect that is present in the microcapsules, as a disordered potential.
 The additional consideration of mitosis is another facet that may be important to the behavior of segregation. The division of cells may be important to the overall action of the system, particularly at the time scales that these effects are measured at. The difference in the rate of division between cancerous and healthy cells will also be an important aspect of mitosis and its contribution to the co-culture system.
 
 \begin{figure}
-  \includegraphics[width=1.0\columnwidth]{Fig2.png}
+  \includegraphics[width=0.9\columnwidth]{Fig2.png}
   \caption[capsuleECM]
    {A cross section of a spherical capsule enclosing a binary mixture of 
    cells and an extracellular matrix.}
