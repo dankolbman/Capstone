@@ -26,48 +26,62 @@
   \author[Author, Kolbman] % (optional, for multiple authors)
   {Dan Kolbman\\Mentor: Moumita Das}
   \date[2014]
-  {Capstone I, Winter 2014}
+  {Capstone I, Fall 2014}
   \subject{info}
 
   \frame{\titlepage}
 
 
+  % MOVIES %
   \begin{frame}
-    \frametitle{Background}
-    \framesubtitle{Behavior of cancer cells}
-    \includemovie{.85\textheight}{.85\textheight}{cancercancer.mp4}
+    \frametitle{Experimental Motivation: Difference in physical properties of cells in a cell co-culture influence cell migration }
+    \framesubtitle{}
 
-    \includemedia[
-      label=vidA,
-      addresource=cancercancer.mp4,
-      activate=pageopen,
-      width=5cm, height=4cm,
-      flashvars={
-         source=cancercancer.mp4
-        &loop=true
-      }
-    ]{}{VPlayer.swf}
-
+	  \begin{columns}[t]
+      \column{.5\textwidth}
+      \begin{figure}
+        \includegraphics[width=1.0\textwidth]{cancercancer.png}
+        \caption{Cancer cells}
+      \end{figure}
+      \column{.5\textwidth}
+      \begin{figure}
+        \includegraphics[width=1.0\textwidth]{cancerhealthy.png}
+        \caption{Cancer cell in healthy cells}
+      \end{figure}
+    \end{columns}
+    \footnote{From Wirtz Lab, Johns Hopkins. Biophysical Journal (2012). Used with permission of authors.}
     \vfill
     
   \end{frame}  
+  
+    % EXPERIMENTAL %
+  \begin{frame}
+    \frametitle{Experimental Motivation}
+    \framesubtitle{Cell segregation in a co-culture of breast cancer cells and healthy breast epithelial cells.}
+    \begin{figure}
+    \includegraphics[width=1.0\textwidth]{experimental.png} \footnote{From M. Ma Lab, Cornell University. Used with permission of authors}
+    \end{figure}
+
+    \vfill
+  \end{frame}
   
   % BACKGROUND %
   % Provide background about the subject. Talk about the different physical propreties %
   % and how they're thought to affect cancer migration and segregation %
   \begin{frame}
-    \frametitle{Background}
-    \framesubtitle{Behavior of cancer cells}
+    \frametitle{Goal: To understand and predict the role of differential physical properties of cells in co-cultures}
+              
+ %\framesubtitle{Minimal ingredients of a model based on cell biophysical properties}
     
-    \begin{itemize}
-    \item Cancer cells are mechanically softer than healthy cells of the same tissue type. 
-    (Lee et al. Biophysical Journal 2012).
-    \item Cancer cells show much less cell-cell adhesion than non-cancerous cells  due to deficiency of the protein E-cadherin. 
-    (Cukierman et al., Science 2001)
-    \item Cancer cells move more quickly in populations of healthy cells in 2D co-cultures. 
-    (Lee et al, Biophysical Journal 2012, Butcher et al. unpublished).
-    \end{itemize}
-    \vfill
+  \begin{itemize}    
+    \item Cells are Brownian particles
+    \item Cells are soft
+    \item Cells are active and propel themselves
+    \item Some cells show cell-cell adhesion
+    \item A model cell co-culture consists of two (or more) types of cells all growing in one in vitro compartment.
+  \end {itemize} 
+          
+  \vfill
     
   \end{frame}  
   
@@ -75,174 +89,133 @@
   % MODEL %
   % Discuss the general langevin equation for the dynamics of the system %
   \begin{frame}
-    \frametitle{The Model}
-    Minimum Ingredients
-    \begin{itemize}
-    \item Binary system of colloids 
-    \item Activity (self-driven forces due to ATP consumption)
-    \item Cell deformability
-    \item Cell-cell adhesion
-    \item Confinement
-    \end{itemize}
+    \frametitle{A proof of concept model}
     
-	\begin{exampleblock}{Over Damped Langevin Equation}
-	$$\vec{F}(\vec{r _m}) - \gamma \frac{d\vec{r_m}}{dt} + \vec{\eta}(t) = 0$$
+    We study a confined binary system of active and deformable particles in 3D.
+        
+  \begin{exampleblock}{Over Damped Langevin Equation}
+	  $$\vec{F}(\vec{r _m}) - \gamma \frac{d\vec{r_m}}{dt} + \vec{\eta}(t) = 0$$
 	\end{exampleblock}
 	\begin{columns}[t]
     \column{.5\textwidth}
-     $\vec{F}$ -- Total force on the cell \\
-     $\gamma$ -- The damping coefficient \\
+      $\vec{F}$ -- Total force on the cell \\
+      $\gamma$ -- The damping coefficient \\
       $\vec{r_m}$ -- Particle position. \\
     \column{.5\textwidth}
-    $\vec{\eta}$ -- Fluctuating force to approximate collisions with smaller particles \\
-    \end{columns}
+      $\vec{\eta}$ -- Fluctuating force due to activity and thermal fluctuations \\
+  \end{columns}
+
+  \vfill
     
-    \vfill
-    
+  Model investigation in 2D co-cultures yielded promising results. (Butcher et al. unpublished).
+
   \end{frame}
 
   % INTERACTION FORCES %
   \begin{frame}
-    \frametitle{2D Model}
-    \framesubtitle{Interaction Forces}
+    \frametitle{Forces of the cells}
+  	\begin{columns}[t] 
     % Initial system state %
+  	\column{0.6\textwidth}
     \begin{figure}
-      \includegraphics[width=3in]{interaction.png}
-      \caption{Interaction Potential}
+      \includegraphics[width=1.0\columnwidth]{interaction.png}
+%      \caption{Interaction Force}
     \end{figure}
-
-    \vfill
-  \end{frame}
-  
-  %%%% RESULTS FOR 2D %%%%
-  % THE SIMULATION SYSTEM %
-  \begin{frame}
-    \frametitle{2D Model}
-    \framesubtitle{Force Contributions}
-    % Final system state %
-    \begin{figure}
-      \includegraphics[width=3.3in]{msd2D.png}
-      \caption{Single species system with different forces active}
-    \end{figure}
-    \vfill
-  \end{frame}
-
-  % ADHESION %
-  \begin{frame}
-    \frametitle{2D Model}
-    \framesubtitle{Effect of adhesion}
-    \begin{figure}
-      \includegraphics[width=4.5in]{adhinc.jpg}
-      \caption{Red - Healthy Cells, Blue - Cancerous Cells}
-    \end{figure}
-    \vfill
-  \end{frame}
-
-
-  % PHASE DIAGRAM %
-  \begin{frame}
-    \frametitle{2D Model}
-    \framesubtitle{Phase Diagram}
-    \begin{columns}[t] 
-    \column{0.5\textwidth}
-    \begin{figure}
-    \end{figure}
-    \column{0.5\textwidth}
-    \begin{figure}
-    \end{figure}
-    \end{columns}
-    \vfill
-  \end{frame}
-  
-
-  % MOTIVATION %
-  % Motivate the need for a 3d version of the model %
-  \begin{frame}
-    \frametitle{Motivation for a 3D Model}
-    \framesubtitle{New experimental data}
-    
+    \column{0.4\textwidth}
+    Three types of forces on the cells:
     \begin{itemize}
-    \item Cells move at different rates in $2D$ than in $3D$.
-    (Cukierman et al., Science 2001)
-    \item Cells move differently when confined in an extracellular matrix (ECM). 
-    (Doyle et al., J. Cell Biol. 2009)       
-    \item New experiments and techniques are becoming available to observe cellular co-cultures in $3D$
-    
-    \item Little theoretical understanding of biomechanics and biophysics of cell co-cultures existing in $3D$
+    \item Active forces generated by consumption of energy by cells. (Only cancerous cells)
+    \item Elastic repulsion when cells push each other. 
+    \item Cell-cell adhesion when cells come into contact. (Only healthy cells)
     \end{itemize}
-    
-    
-	\center\emph{Can we propose a new model of cancer cell aggregation and migration in $3D$? \\
-	Can we obtain insights from these results about the underlying physical mechanism of metastasis?}
-    
-    \vfill
-    
-  \end{frame}
-    
-  % EXPERIMENTAL %
-  \begin{frame}
-    \frametitle{Experimental Results}
-    \framesubtitle{MSD}
-    \begin{figure}
-    \includegraphics[width=3.4in]{MMaMWufig.png}
-    \caption{Core-shell hydrogel microcapsules with ECM support for 3D confined cell culture. (a) A schematic of an ECM-supported microcapsule. (b) MDA-MB-231 cells with tomato red expression encapsulated within collagen matrix. (c) A magnified view of a single microcapsule. (d) Cells in the collagen fibers (green) in the inner layer of a microcapsule (e-h) Cell segregation under 3D confinement: MDA-MB-231 (with red Tomato fluorescence) and MCF-10A cells.
-Experimental collaboration: M. Wu and M. Ma, Cornell University}
-    \end{figure}
-    \vfill
-  \end{frame}
-    
-  % EXPERIMENTAL %
-  \begin{frame}
-    \frametitle{Experimental Conditions}
-  	\begin{columns}[t] 
-  	\column{0.5\textwidth}
-  	\begin{figure}
-  	  \includegraphics[height=1.0in]{minglin.png}
-  	  \caption{An expiremental microcapsule with a cellular co-culture.
-Collaboration: M. Ma, M. Wu, Cornell University}
-  	\end{figure}
-    \column{.5\textwidth}
-    \begin{figure}
-      \includegraphics[height=1.0in]{Fig1.png}
-      \caption{An ideal microcapsule containing a cellular co-culture}
-    \end{figure}
     \end{columns}
-    \begin{centering}
-    Inner diameter -- $50-700$ \textmu m\\
-    Outer diameter -- $400-7000$ \textmu m\\
-	  Cell diameter -- $\sim 10$ \textmu m\\
-    \end{centering}
     \vfill
   \end{frame}
 
-  % 3D conf, msd %
+  % BROWNIAN RESULTS %
   \begin{frame}
-    \frametitle{3D Model}
-    \framesubtitle{}
+    \frametitle{Brownian Motion in 3D}
+    %\framesubtitle{Brownian motion in 3D}
   	\begin{columns}[t] 
-  	\column{0.5\textwidth}
-  	\begin{figure}
-  	  \includegraphics[height=1.6in]{3dconf.png}
-      \caption{Configuration for 3D Co-culture.}
+  	\column{0.6\textwidth}
+  	\begin{figure}[h]
+  	  \includegraphics[width=2.5in]{brownianMSD.png}
+      \caption{Mean Square Displacement (MSD) for a brownian system}
   	\end{figure}
-    \column{.5\textwidth}
-    \begin{figure}
-      \includegraphics[height=1.6in]{3dmsd.png}
-      \caption{MSD for 3D Co-culture.}
-    \end{figure}
+    \column{.4\textwidth}
+      \vspace{0.25in}
+      \\
+      For a 3D brownian system, Einstein says that: \\
+      \begin{centering}
+        $\bar{r^2} = 6Dt$ \\
+      \end{centering}
+      Where:\\
+      $\bar{r^2}$ is the mean square displacement \\
+      $D$ is the diffusion constant.
     \end{columns}
+    \vfill
+  \end{frame}
+
+  % CO-CULTURE SYSTEM: MOTILITY %
+  \begin{frame}
+    \frametitle{A Co-Culture System in Our Model}
+    \framesubtitle{Cell motility}
+  	\begin{columns}[t] 
+  	\column{0.6\textwidth}
+  	\begin{figure}[h]
+  	  \includegraphics[width=2.5in]{cocultureMSD.png}
+  	\end{figure}
+    \column{.4\textwidth}
+      \vspace{0.25in} \\
+      \begin{itemize}
+      \item Set the repulsion of healthy cells to 10x that of cancerous \\
+      \item Give only cancer cells propulsion \\
+      \item Give only healthy cells adhesion (Cancer cells don't have E-Cadherin)
+      \end{itemize}
+    \end{columns}
+    \vfill
+  \end{frame}
+
+  % CO-CULTURE SYSTEM: SEPARATION %
+  \begin{frame}
+    \frametitle{A Co-Culture System in Our Model}
+    \framesubtitle{Cell separation}
+    \begin{figure}
+  	  \includegraphics[width=0.75\textwidth]{3dconf.png}
+      \caption{Separation in our 3D model}
+    \end{figure}
     \vfill
   \end{frame}
   
   % FUTURE GOALS %
   \begin{frame}
-    \frametitle{Future Goals}
+    \frametitle{Future Goals in Capstone II}
     \framesubtitle{}
-    \begin{itemize}
-    \item Add ECM in the form of a disordered potential
-    \item Account for mitosis
-    \item Run for longer time scales
+
+    \begin{itemize}\itemsep1pt \parskip0pt
+      \item Apply experimental values and compare
+      \item Add extra cellular matrix
+      \item Add cell division (mitosis)
+      \item Obtain results and analyze and interpreted  data
+      \item Attend March Meeting and present results
+      \item Calculate phase diagram with experimentally relevant parameters
+      \item Write paper, give talk
     \end{itemize}
+    
+    \vfill
+  \end{frame}
+  
+  % THANKS %
+  \begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+
+    \centering{\Huge{Thanks!}} \\
+    \vspace{0.5in}
+    Dr. Das and Julian Butcher \\
+    Dr. Barton and the Capstone Committee \\
+    Drs Ma and Wu
+    
     \vfill
   \end{frame}
   
