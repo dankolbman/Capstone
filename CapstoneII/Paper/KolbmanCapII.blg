@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2014/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: KolbmanCapII.aux
+The style file: h-physrev5.bst.bst
+Database file #1: DanKolbmanBibliographyFile.bib
+You've used 14 entries,
+            1973 wiz_defined-function locations,
+            720 strings with 7622 characters,
+and the built_in function-call counts, 3043 in all, are:
+= -- 192
+> -- 166
+< -- 0
++ -- 54
+- -- 37
+* -- 255
+:= -- 398
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 148
+empty$ -- 316
+format.name$ -- 51
+if$ -- 715
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 15
+newline$ -- 60
+num.names$ -- 14
+pop$ -- 59
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 152
+stack$ -- 0
+substring$ -- 170
+swap$ -- 40
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 25
+width$ -- 16
+write$ -- 103

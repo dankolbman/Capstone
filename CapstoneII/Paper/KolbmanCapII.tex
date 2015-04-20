@@ -38,7 +38,7 @@ such as cell aggregation and differential migration experimentally observed in c
 
 \maketitle
 
-\section*{Background and Motivation}
+\section{Background and Motivation}
 
 In several biological processes, from the formation of embryos to the formation and progression of tumors, cells with different physical properties are present in close proximity, with important
 consequences for cell-cell interaction, aggregation, and migration. Laboratory cell co-cultures made of two different cell populations are ideal systems to qualitatively and quantitatively 
@@ -51,29 +51,36 @@ As a result, the cancer cells are much more deformable. Recent experiments sugge
 cell population \cite{Lee}. 
 
 Until recently, most experiments and models of cell co-cultures have focused on two dimensional systems, with limited application to physiological conditions\cite{Jong}.
-Recently, new techniques for observing co-cultures in three dimensions have become available\citep{Alessandri}.  Accordingly, we seek to formulate a minimal
-model of co-culture cell mechanics in three dimensions by extending previous two dimensional simulations of binary systems of deformable and active colloids\cite{Butcher}.
-Together with our experimental collaborators Drs Wu and Ma at Cornell university, we aim to characterize the role of difference in physical properties such as cell stiffness, cell-cell adhesion,
-and self-propulsion in  aggregation and migration in co-cultures of breast cancer cells and non-cancerous cells in three dimensions.
+Recently, new techniques for observing co-cultures in three dimensions have become available\citep{Alessandri}.
+Accordingly, we seek to formulate a minimal model of co-culture cell mechanics in three dimensions by extending previous two dimensional simulations of binary systems of deformable and active colloids\cite{Butcher}.
+Together with our experimental collaborators Drs Wu and Ma at Cornell university, we aim to characterize the role of difference in physical properties such as cell stiffness, cell-cell adhesion, and self-propulsion in aggregation and migration in co-cultures of breast cancer cells and non-cancerous cells in three dimensions.
 Furthermore, we will focus on confined systems to better recreate the physiological and experimental systems we are studying.
 From a physics perspective, we will study the interplay of cell mechanics, and statistical mechanical in cell migration in a confined binary system in three dimensions.
 The main ingredients of the model are discussed below.\\
 
 
-{\bf 1. Co-culture Systems: mechanical stiffness, cell-cell adhesion, and self-propulsion of cancer cells vs healthy cells}\\
-The system we seek to model is a co-culture of breast cancer cells and non-cancerous breast epithelial cells. 
-In laboratory experiments, when introduced to a monolayer of healthy cells, cancer cells have been observed to have higher migration rates than when in a monolayer of other cancerous cells \cite{Lee}.
-In addition to the difference in stiffness \cite{Lee}, the adhesion properties of cancer cells have also been found to be drastically different from that of non-cancerous cells\cite{Jeanes}.
-Most healthy cells adhere to each other via the protein E-cadherin when they come in contact \cite{Suresh}. Cancer cells lack this adhesiveness. Cancer cells further show enhanced self-propulsion (i.e. how fast individual cells can propel themselves by consuming ATP or due to other internal forces in the absence of any other 
-interaction forces), compared to non-cancerous cells of the same tissue type. The differences in the adhesiveness, stiffness, and self propulsion of the two cell types is a key ingredient in our model.\\
+\subsection{Behavior of Healthy and Cancerous Cells}
+
+Healthy and cancerous breast epithelial cells, particularly MCF-7 and MDA-MB-231, have been widely studied and their physical properties well known \cite{}.
+Experimental work involving these two cell types has shown interesting behavior in co-culture systems of these breast cells.
+One such behavior occurs when cancerous cells are introduced to a monolayer of healthy cells.
+In this experiment, the cancer cells are observed to have higher migration rates than when in a monolayer consisting soley of other cancerous cells \cite{Lee}.
+Another interesting behavior obsered by experimentalists is the separation of the two cell types.
+When a co-culture of cancerous and healthy cells are confined in a spherical droplet, they are seen to separate with cancerous cells gathering around the boundaries of the droplet and the healthy cells aggregating in the center \cite{Mingming}.
+
+%In addition to the difference in stiffness \cite{Lee}, the adhesion properties of cancer cells have also been found to be drastically different from that of non-cancerous cells\cite{Jeanes}.
+%Most healthy cells adhere to each other via the protein E-cadherin when they come in contact \cite{Suresh}. Cancer cells lack this adhesiveness.
+%Cancer cells further show enhanced self-propulsion (i.e. how fast individual cells can propel themselves by consuming ATP or due to other internal forces in the absence of any other interaction forces), compared to non-cancerous cells of the same tissue type. The differences in the adhesiveness, stiffness, and self propulsion of the two cell types is a key ingredient in our model.\\
 \\
 
-{\bf 2. Cell migration in three dimensions--different from two-dimensional migration.}\\
-Previously several experimental and theoretical studies have addressed various aspects of cell migration in two dimensions, including protrusion, adhesion, and retraction at the level of single cells, and collective motion at the multicellular level.
-However, the {\it in vivo} environment for a crawling cell is typically a three-dimensional environment, consisting of the extracellular matrix (ECM) and surrounding cells.
-Recent experiments show increased migration rates of cells in three-dimensional matrices as opposed to  two-dimensional surfaces \cite{Cukierman}. Our simulations are carried out in three dimensions.\\ 
+\subsection{Cell Migration in Three Dimensions}
 
-{\bf 3. Role of confinement}\\
+Previously several experimental and theoretical studies have addressed various aspects of cell migration in two dimensions, including protrusion, adhesion, and retraction at the level of single cells, and collective motion at the multicellular level \cite{}.
+However, the {\it in vivo} environment for a crawling cell is typically a three-dimensional environment, consisting of the extracellular matrix (ECM) and surrounding cells.
+Recent experiments show increased migration rates of cells in three-dimensional matrices as opposed to two-dimensional surfaces \cite{Cukierman}.
+
+\subsection{Role of Confinement}
+
 Ongoing experiments in the laboratories of our collaborators Dr. M. Wu and Dr. M. Ma involve observing co-cultures inside spherical capsules with diameters of the order of several hundred micro-meters 
 and containing hundreds of cells\cite{Alessandri} (See FIG. \ref{fig:capsule}). Given that confinement and finite system size can have important consequences for the statistical mechanics and collective 
 properties of the cell-culture, it will be vital to account for them in our model. The spherical capsules in the experiments we will model have an inner diameter of $50-700$ micro-meters and an outer diameter of $400-7000$ micro-meters.
@@ -87,13 +94,6 @@ The outside of this layer is coated such that cells will not adhere to this laye
    cells.}
    \label{fig:capsule}
 \end{figure}
-
-{\bf 4. Interaction with the extra cellular matrix}\\
-The extracellular matrix (ECM) is a structural network of fibers that surrounds the cells, and interacts with the contained 
-cells \cite{Alberts}. Most healthy cells adhere to the ECM and move along it in a manner mimicking one-dimensional motion \cite{Cukierman}. 
-Migration speed of cells in this manner has been observed to be significantly higher than on two dimensional surfaces
-\cite{Doyle}. Considering the ECM and the interaction of cells with the ECM will thus be very 
-important in the development of our three-dimensional model. This aspect will be explored in Capstone II.
 
 
 \section*{Model}
@@ -123,7 +123,7 @@ elastic repulsive interaction. For the non-cancerous (stiff) cells, there furthe
 modeled here as an attractive interaction at contact. The cancer (comparatively soft) cells do not have this adhesion. As for non-contact forces, 
 the cancer cells can generate large self-propulsion forces. The self-propulsion forces generated by non-cancerous cells are orders of magnitude smaller in comparison 
 and are assumed to be zero in our model. The strengths of the interactions are tuned to mimic physiological
-conditions, where we use a stiffness of 2 KPa for the stiff (healthy) cells, 0.67 KPa for the soft (cancerause) cells, and a diffusion constant of $D=1.8 \mu m^2/min$ for both cell types. 
+conditions, where we use a stiffness of 2 KPa for the stiff (healthy) cells, 0.67 KPa for the soft (cancerous) cells, and a diffusion constant of $D=1.8 \mu m^2/min$ for both cell types. 
 Both cell types have the same diameter  $\sigma = 1.07$ $\mu m$.
 The cancer cells are assumed to be up to ten times softer than their non-cancerous counterparts. 
 Cell density is chosen to ensure a nearly confluent system. The particle positions evolve according to the over damped 
@@ -213,7 +213,7 @@ studied in the past\cite{RednerBaskaran}, and found to form a nearly confluent s
 
 
 % Technical stuff %
-\subsection*{Numerical Methods}
+\section{Numerical Methods}
 
 The dynamics simulations are computed in Julia, a high-performance, dynamic 
 programming language for scientific computing. Spatial cell hashing and neighbor 
@@ -223,11 +223,12 @@ Euler method to integrate with time steps between $10^{-4}\tau$ and $10^{-6}\tau
 Ten identical runs, reach for a different random initial configuration of cells, were run in parallel for each simulation
 and averaged together to produce Mean Square Displacement (MSD) data for a given set of parameters.
 
-\section*{Results}
+\section{Results}
 
-{\bf Brownian diffusion}
+\subsection{Brownian Diffusion}
 According to Einstein's theory of brownian motion, it is expected that the mean
 square displacement of a particle undergoing Brownian motion in three dimensions should evolve proportional to the time, with a proportionality constant $6 D$, where $D$ is the diffusion constant. In our non-dimensionalized model, this constant pre-actor should be $6$. We used this fact to confirm that the dynamics of the simulation were working properly. To test this, all interaction and propulsive forces were turned off and the system was evolved only under brownian forces. Ten identical simulations were run and averaged to produce FIG. \ref{fig:brownianMSD}. The slope is very nearly the expected value and will be exact for larger numbers of trial runs and larger system sizes.
+
 \begin{figure}
   \includegraphics[width=\columnwidth]{brownianMSD.png}
   \caption[brownianMSD]
@@ -236,7 +237,8 @@ square displacement of a particle undergoing Brownian motion in three dimensions
   \label{fig:brownianMSD}
 \end{figure}
 
-{\bf  Segregation}
+\subsection{Segregation}
+
 Next we focused on the segregation of the cancer cells from the non cancer cells
 observed in ongoing experiments by our collaborators Drs. Ma and Wu. 
 They have found that, starting with a randomly distributed mixture of breast cancer cells,
@@ -244,6 +246,7 @@ and non-cancerous breast epithelial cells inside the spherical microfluidic caps
 (of the order of weeks), the two cell types phase separate. The healthy cells assemble in the the center of capsule,
 while the cancerous cells collect near the boundary and form an outer shell. By using parameters similar to those 
 in the experiments, we are able to qualitatively replicate this using our model.
+
 \begin{figure*}
   \centering
   \begin{subfigure}[t]{1.0\textwidth}
@@ -277,24 +280,59 @@ of our system over an experimental timescale of the order of at least a week. Th
   \label{fig:cocultureMSD}
 \end{figure}
 
-{\bf Differential migration}
+\subsection{Differential Migration}
 One case that was investigated closely in the two-dimensional model was a co-culture system with healthy, adhesive cells, and cancerous, propulsive cells with an elasticity 
 difference of one order. As in the two-dimensional case, we find that in the three dimensional co-culture, the cancerous cells migrated faster than the healthy cells. This is represented by the larger
 slope of the mean square displacement (MSD) vs time, for the cancer cells compared to the healthy cells. (See FIG. \ref{fig:cocultureMSD}).
 
+\subsection{Size Dependence}
+
+Due to the difficulty of the simulation, a system comparable to the systems produced in the lab consisting of millions of cells is not feasable.
+Instead, a much smaller system (512-1024 cells) was needed to produce results in a reasonable fashion.
+I ran the model under similar conditions for different quantities of cells to determine what considerations to make when comparing my model to experimental results from colaborators.
+
+\subsection{Packing Fraction Dependence}
+
+The critical packing fraction for solid spheres where the system becomes jammed is $0.74$.
+Given that the model consists of deformable spheres as opposed to solid spheres, it was expected that the reach a critical packing fraction obove $0.74$ and show significantly reduced motility in both species.
+
+
+\subsection{Stiffness Dependence}
+
+One motivating hypothesis behind this model was that the difference in cell elasticity caused a mismatch in motility of the two cell species.
+The model was run for several different ratios of stiffness between the two cells ranging up to three orders difference between the two.
+
+\subsection{Adhesive Dependence}
+
+\subsection{Propulsion Dependence}
+
+
+
 \section*{Conclusions}
 We have constructed a simple proof-of-concept cell co-culture model to test the hypothesis that differences in physical properties of cells in close proximity in a co-culture can influence emergent collective properties such as migration
-and segregation. Our preliminary results indicate that this is indeed true. During the next semester we will examine the full phase diagram of this system. We will study MSD (migration), and segregation in a multi-dimensional phase space
-made of three physical parameters -- ratio of stiffness of the two cell types, self-propulsion of the cancer cells, and cell-cell adhesion strength of the healthy cells. We will work closely with our experimental colleagues to identify experimentally
-accessible and physiologically relevant regimes in this phase diagram. We will also add the two more components -- the presence of the ECM and cell division -- to our model that may be important for the cell segregation and migration observed in experiments. The ECM is an important constituent of the experimental microcapsules, and we will model it has a disordered potential  (See FIG. \ref{fig:capsuleECM}). The drastic difference in cell division rates between cancer cells and healthy cells may be crucial to the experimentally observed collective behavior of the system over the timescales (of the order of weeks) the system is monitored, and will be included by allowing for cells to divide into two following local rules. 
+and segregation. Our preliminary results indicate that this is indeed true.
+During the next semester we will examine the full phase diagram of this system.
+We will study MSD (migration), and segregation in a multi-dimensional phase space made of three physical parameters -- ratio of stiffness of the two cell types, self-propulsion of the cancer cells, and cell-cell adhesion strength of the healthy cells.
+We will work closely with our experimental colleagues to identify experimentally accessible and physiologically relevant regimes in this phase diagram.
+We will also add the two more components -- the presence of the ECM and cell division -- to our model that may be important for the cell segregation and migration observed in experiments.
+The ECM is an important constituent of the experimental microcapsules, and we will model it has a disordered potential  (See FIG. \ref{fig:capsuleECM}).
+The drastic difference in cell division rates between cancer cells and healthy cells may be crucial to the experimentally observed collective behavior of the system over the timescales (of the order of weeks) the system is monitored, and will be included by allowing for cells to divide into two following local rules. 
 
 \begin{figure}
   \includegraphics[width=0.9\columnwidth]{Fig2.png}
   \caption[capsuleECM]
-   {A cross section of a spherical capsule enclosing a binary mixture of 
-   cells and an extracellular matrix.}
+   {A cross section of a spherical capsule enclosing a binary mixture of cells and an extracellular matrix.}
    \label{fig:capsuleECM}
 \end{figure}
+
+
+\section{Future Work}
+
+\subsection{Interaction with the Extra Cellular Matrix}
+The extracellular matrix (ECM) is a structural network of fibers that surrounds the cells, and interacts with the contained cells \cite{Alberts}.
+Most healthy cells adhere to the ECM and move along it in a manner mimicking one-dimensional motion \cite{Cukierman}.
+Migration speed of cells in this manner has been observed to be significantly higher than on two dimensional surfaces \cite{Doyle}.
+Considering the ECM and the interaction of cells with the ECM will thus be very important in the development of our three-dimensional model.
 
 \begin{acknowledgments}
 Many thanks to: Dr. Moumita Das for her mentorship and inputs, Julian Butcher for useful discussions, Drs. Minglin Ma and Mingming Wu for their collaboration and discussions, 
