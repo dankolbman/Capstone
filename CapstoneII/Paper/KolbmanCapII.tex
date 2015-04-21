@@ -51,27 +51,27 @@ As a result, the cancer cells are much more deformable. Recent experiments sugge
 cell population \cite{Lee}. 
 
 Until recently, most experiments and models of cell co-cultures have focused on two dimensional systems, with limited application to physiological conditions\cite{Jong}.
-Recently, new techniques for observing co-cultures in three dimensions have become available\citep{Alessandri}.
-Accordingly, we seek to formulate a minimal model of co-culture cell mechanics in three dimensions by extending previous two dimensional simulations of binary systems of deformable and active colloids\cite{Butcher}.
-Together with our experimental collaborators Drs Wu and Ma at Cornell university, we aim to characterize the role of difference in physical properties such as cell stiffness, cell-cell adhesion, and self-propulsion in aggregation and migration in co-cultures of breast cancer cells and non-cancerous cells in three dimensions.
+Recently, new techniques for observing co-cultures in three dimensions have become available\cite{Alessandri}.  Accordingly, we seek to formulate a minimal
+model of co-culture cell mechanics in three dimensions by extending previous two dimensional simulations of binary systems of deformable and active colloids\cite{Butcher}.
+Using an integrated modeling and experimental approach, we aim to characterize the role of difference in physical properties such as cell stiffness, cell-cell adhesion,
+and self-propulsion in  aggregation and migration in co-cultures of breast cancer cells and non-cancerous cells in three dimensions.
 Furthermore, we will focus on confined systems to better recreate the physiological and experimental systems we are studying.
 From a physics perspective, we will study the interplay of cell mechanics, and statistical mechanical in cell migration in a confined binary system in three dimensions.
 The main ingredients of the model are discussed below.\\
 
 
-\subsection{Behavior of Healthy and Cancerous Cells}
 
-Healthy and cancerous breast epithelial cells, particularly MCF-7 and MDA-MB-231, have been widely studied and their physical properties well known \cite{}.
-Experimental work involving these two cell types has shown interesting behavior in co-culture systems of these breast cells.
+\subsection{Differential physical properties of binary cell populations: mechanical stiffness, cell-cell adhesion, and self-propulsion of cancer cells Vs. non-cancerous cells}
+
+Our computational study seeks to understand the biophysics of a model binary system consisting of two types of cells- breast cancer cells and healthy breast epithelial cells. 
+Healthy breast epithelial cells and breast cancer cells, particularly the cell lines MCF-7 and MDA-MB-231 respectively, have been widely studied and their physical properties well known \cite{Suresh}.
+Experimental work involving these two cell types has shown interesting behavior in co-culture systems of these breast cells where they grow.
 One such behavior occurs when cancerous cells are introduced to a monolayer of healthy cells.
-In this experiment, the cancer cells are observed to have higher migration rates than when in a monolayer consisting soley of other cancerous cells \cite{Lee}.
-Another interesting behavior obsered by experimentalists is the separation of the two cell types.
-When a co-culture of cancerous and healthy cells are confined in a spherical droplet, they are seen to separate with cancerous cells gathering around the boundaries of the droplet and the healthy cells aggregating in the center \cite{Mingming}.
+In this experiment, the cancer cells are observed to have higher migration rates than when in a monolayer consisting solely of other cancerous cells \cite{Lee}.
+Another interesting behavior observed by experimentalists is the separation of the two cell types.
+When a co-culture of cancerous and healthy cells are confined in a spherical droplet, they are seen to separate with cancerous cells gathering around the boundaries of the droplet and the healthy cells aggregating in the center \cite{Mingming}. In addition to the difference in stiffness \cite{Lee}, the adhesion properties of most cancer cells have also been found to be drastically different from that of non-cancerous cells of the same tissue type\cite{Jeanes}.
+Most healthy cells adhere to each other via the protein E-cadherin when they come in contact. Cancer cells lack this adhesiveness. Cancer cells further show enhanced self-propulsion (i.e. how fast individual cells can propel themselves by consuming ATP or due to other internal forces in the absence of any other interaction forces), compared to non-cancerous cells of the same tissue type \cite{Suresh}. The differences in the adhesiveness, stiffness, and self propulsion of the two cell types is a key ingredient in our model.
 
-%In addition to the difference in stiffness \cite{Lee}, the adhesion properties of cancer cells have also been found to be drastically different from that of non-cancerous cells\cite{Jeanes}.
-%Most healthy cells adhere to each other via the protein E-cadherin when they come in contact \cite{Suresh}. Cancer cells lack this adhesiveness.
-%Cancer cells further show enhanced self-propulsion (i.e. how fast individual cells can propel themselves by consuming ATP or due to other internal forces in the absence of any other interaction forces), compared to non-cancerous cells of the same tissue type. The differences in the adhesiveness, stiffness, and self propulsion of the two cell types is a key ingredient in our model.\\
-\\
 
 \subsection{Cell Migration in Three Dimensions}
 
@@ -88,7 +88,7 @@ The cells are present inside the inner capsule and have a dimensions of the orde
 The outside of this layer is coated such that cells will not adhere to this layer upon contact. \\
 
 \begin{figure}
-  \includegraphics[width=3in]{Fig1.png}
+  \includegraphics[width=3in]{images/Fig1.png}
   \caption[capsule]
    {A cross section of a spherical capsule enclosing a binary mixture of 
    cells.}
@@ -96,10 +96,10 @@ The outside of this layer is coated such that cells will not adhere to this laye
 \end{figure}
 
 
-\section*{Model}
+\section{Model}
 
 \begin{figure}
-  \includegraphics[width=1.0\columnwidth]{3dconf.png}
+  \includegraphics[width=1.0\columnwidth]{images/3dconf.png}
   \caption[3dconf]
     {A sample configuration of a confined three dimensional co-culture system.}
    \label{fig:3dconf}
@@ -109,28 +109,23 @@ We study the collective dynamics of this system using an active Brownian Dynamic
 their dimensions and timescale of motion are much larger than that of the particles of the surrounding medium in which they are suspended and in equilibrium  their motion is diffusive. In addition
 our system is ``active" because cells can generate forces by consuming ATP and propel themselves. A simple model of homogeneous monolayers of such active particles consists
 of a two dimensional system of interacting colloidal particles that are also each active, i.e. self-driven \cite{FilyMarchetti,RednerBaskaran}. 
-Such models have been previously used to study swarming  behavior \cite{Vicsek} in birds, insects and fish. Our group has recently combined this approach with cell 
+Such models have been previously used to study swarming  behavior \cite{Vicsek} in birds, inspections and fish. Our group has recently combined this approach with cell 
 mechanics and applied it to a binary population of cells, to study the collective mechanics and dynamics in cell co-cultures characterized by a difference in cell stiffness.
 This study found that mechanical mismatch in co-cultures can have important consequences cell migration, and can lead to enhanced motility for more deformable cells\cite{Butcher}, 
 in agreement with the Lee and coworkers \cite{Lee}. In this project, we extend this model to a three-dimensional system, include cell-cell adhesion, and further add the presence of a 
 confining sphere to mimic the experimental set-up used by our collaborators \cite{Mingming}. 
 
-
-Our model co-culture is made of two sets of active Brownian particles representing the cells (See FIG. \ref{fig:capsule}). The cells only interact with each other when 
-they come into contact. The contact interaction between cells is of two types. First, when cells come into
-contact and push against each other, depending on their mechanical stiffness they will respond with different forces; this interaction is modeled as an 
-elastic repulsive interaction. For the non-cancerous (stiff) cells, there further exists a cell-cell adhesion,
-modeled here as an attractive interaction at contact. The cancer (comparatively soft) cells do not have this adhesion. As for non-contact forces, 
-the cancer cells can generate large self-propulsion forces. The self-propulsion forces generated by non-cancerous cells are orders of magnitude smaller in comparison 
-and are assumed to be zero in our model. The strengths of the interactions are tuned to mimic physiological
-conditions, where we use a stiffness of 2 KPa for the stiff (healthy) cells, 0.67 KPa for the soft (cancerous) cells, and a diffusion constant of $D=1.8 \mu m^2/min$ for both cell types. 
-Both cell types have the same diameter  $\sigma = 1.07$ $\mu m$.
-The cancer cells are assumed to be up to ten times softer than their non-cancerous counterparts. 
-Cell density is chosen to ensure a nearly confluent system. The particle positions evolve according to the over damped 
+Our model co-culture is made of two sets A and B of active Brownian particles representing the cells (See FIG. \ref{fig:capsule}). 
+The cells only interact with each other when they come into contact. The contact interaction between cells is of two types. First, when cells come into contact and push against each other,
+depending on their mechanical stiffness they will respond with different forces; this interaction is modeled as an elastic repulsive interaction. For the non-cancerous (stiff) cells, there further exists
+a cell-cell adhesion, modeled here as an attractive interaction at contact. The cancer (comparatively soft) cells do not have this adhesion.
+The strengths of the interactions are tuned to mimic physiological conditions, where we use a stiffness of $2000 Pa$ for the stiff  (healthy) cells and $667 Pa$ for the soft (cancer) cells \cite{Lee},
+and a diffusion constant of $\sim 1.8 \mu m^2 /min$ for both cell types (private communication with Dr. Wu).  Both cell types have the same diameter  $\sigma = 15$ $\mu m$.
+The cancer cells are assumed to be up to ten times softer than their non-cancerous counterparts.  The particle positions evolve according to the overdamped 
 Langevin equations \cite{Lemons,RednerBaskaran,FilyMarchetti,Butcher}: 
 
 \begin{equation}
-  \bm{\dot{r}} = \frac{1}{\gamma}\bm{F}_{int}(\bm{r}) + v_p\hat{\bm{v}}_i+\sqrt{2D}\eta^T
+  \bm{\dot{\bm{r}_i}} = \frac{1}{\gamma}\bm{F}_{int}(\bm{r}_i) + v_p\hat{\bm{v}}_i+\sqrt{2D}\eta_i^T
 \end{equation}
 
 \begin{equation}
@@ -141,32 +136,41 @@ Where $F_{int}$ is the interaction forces on the cell from adhesion and repulsio
 The variables $\bm{r}_i$ and $\dot{\bm{r}}_i$ are the position and velocity of the i\textit{th} particle, respectively.
 The constant $\gamma$ is the damping coefficient of the fluid used. It is related to the
 diffusion constant, $D$, by $D=\frac{k_BT}{\gamma}$, where $k_B$ is the Boltzman constant and $T$ is temperature and has been set to $298$ Kelvin. 
-The variable $v_p$ is the magnitude of propulsion and $\bm{\hat{v}}_i$ is the direction of propulsion, $\bm{\hat{v}}=(cos\theta_i, sin\theta_i)$.
+The variable $v_p$ is the magnitude of propulsion and is $\sim 100 \mu m/hr$ in our experiments, and $\bm{\hat{v}}_i$ is the direction of propulsion, $\bm{\hat{v}_i}=(\cos \theta_i, \sin \theta_i)$.
 The noise $\eta^T$ represents fluctuations in translational motion and account for collisions with smaller fluid particles, while
-$\eta^R$ is the rotational noise to simulate fluctuations in the direction of travel from ATP use by cells. 
-Both types of noise follow the fluctuation dissipation theorem:
+$\eta^R$ is the rotational noise to simulate fluctuations in the direction of travel from ATP use by cells. Both types of noise follow Gaussian statistics, and satisfy the fluctuation dissipation theorem.
 
 \begin{equation}
-\left\langle \eta(t)\eta(t')\right\rangle = 0 
+\left\langle \eta_i(t)\eta_i(t')\right\rangle = 0 
 \end{equation}
 \begin{equation}
-\left\langle \eta(t)\eta(t')\right\rangle = 2k_bT\gamma
-\delta(t-t')
+\left\langle \eta_i(t)\eta_j(t')\right\rangle = \delta_{ij} \delta(t-t')
 \end{equation}
 
 % Dimension stuff %
 
 We define $k_BT$ and $\sigma$ to be our units of energy and length and define 
 unit time as $\tau = \frac{\sigma^2}{D}$. These units are respectively used to non-dimensionalize 
-energy, length, and time scales in the simulation. 
+energy, length, and time scales in the simulation. Total particle density is set to $60\%$, and 
+the Peclet number of the system, defined as $Pe= v_p \tau/\sigma$, and is chosen to be 12 in the simulations.
+In the experimental system it is  $\sim 12.5$. 
+The chosen particle volume fraction (of $60-70 \%$ and Pe ensure a system that is not jammed but close to confluence.  Furthermore, 
+in the low-Reynolds number regime, the rotational diffusion $D_r$ is related to the translational 
+diffusion $D$ as $D_r= 3 D /\sigma^2$, we added an additional prefactor $<1$ to account for a smaller
+rotational diffusion due to the presence of the extracellular microenvironment felt here in an average sense.
+
+
 
 % Interaction forces %
 
 The interaction forces are important for investigating how the elasticity and adhesivity of cells affects their migration and segregation. For non-cancerous cells, 
-we have modeled the stiffness of the cells using a simple Hookean spring force while we use a `V' well to model the adhesion (See FIG. \ref{fig:interaction}). 
+we have modeled the stiffness of the cells using (i) a simple Hookean spring potential, and (ii) a Hertz interaction potential, while we use a `V' well to model the adhesion (See FIG. \ref{fig:interaction}). 
 The result is particles that will desire to be close together, while resisting overlap. Cancer cells have qualitatively similar (but weaker) elastic repulsion, and not do not show 
-cell-cell adhesion because of the lack of the protein E-cadherin \cite{Jeanes}. For two cells whose centers are separated by a distance $r$, the magnitude of the repulsive and adhesive forces are:
+cell-cell adhesion because of the lack of the protein E-cadherin \cite{Jeanes}. 
 
+
+For two cells whose centers are separated by a distance $r$, we first modeled the elastic repulsion by a  Hookean interaction as follows, with amplitude $F^0_{rep}$ determined phenomenologically.
+ 
 \begin{equation}
   F_{rep}(r) = F^0_{rep} \left\{ 
     \begin{array}{lr}
@@ -176,6 +180,23 @@ cell-cell adhesion because of the lack of the protein E-cadherin \cite{Jeanes}. 
   \right.
   \label{eq:frep}
 \end{equation}
+
+Next, we carried out the simulations with the more physiologically realistic Hertz interaction force for non-adhesive contact mechanics between two deformable spheres (cells) given by \cite{}:
+
+\begin{equation}
+  F_{rep}(r) = F^0_{rep} \left\{ 
+    \begin{array}{lr}
+      (1-\frac{r}{\sigma})^{3/2} &, r < 0\\
+      0 &, r \ge \sigma
+    \end{array}
+  \right.
+  \label{eq:frep}
+\end{equation}
+
+The force $F^0_{rep}$ is given by $(2 \sqrt/3) E^* \sigma^2$ where $E$ is the effective Young's modulus given by $1/E^*=1/E_1 + 1/E_2$, $E_1$ and $E_2$ being the Young's moduli of the two cell types. 
+
+
+The magnitude of the adhesive force is given by:
 
 \begin{equation}
   F_{adh}(r) =F^0_{adh} \left\{
@@ -187,50 +208,66 @@ cell-cell adhesion because of the lack of the protein E-cadherin \cite{Jeanes}. 
   \label{eq:fadh}
 \end{equation}
 
-The amplitudes of the interaction forces are chosen depending on the species of the particle. We denote these as $F^0_{rep}$ and $F^0_{adh}$ for the repulsive and adhesive prefactors, respectively.
-The forces act along the separation between the center of the two particles. 
-The parameter $\epsilon$ is the phenomenological lengthscale over which the non-cancerous cells show cell-cell adhesion. 
+The forces act along the separation between the center of the two particles. The force amplitudes  $F^0_{rep}$ and $F^0_{adh}$ depend on the species of the particle.  The parameter $\epsilon$ is the phenomenological lengthscale over which the non-cancerous cells show cell-cell adhesion. 
 
 \begin{figure}
   \begin{subfigure}{\columnwidth}
-    \includegraphics[width=1.0\columnwidth]{interaction.png}
+    \includegraphics[width=1.0\columnwidth]{images/interaction.png}
   \end{subfigure}
   \begin{subfigure}{\columnwidth}
-    \includegraphics[width=1.0\columnwidth]{hertz.png}
+    \includegraphics[width=1.0\columnwidth]{images/hertz.png}
   \end{subfigure}
-  \label{fig:interaction}
   \caption[capsuleECM]{Schematics of the general form of the two part interaction force for the two models. For small separations within the diameter of the cells, there is a hookean or Hertzian, repulsive force. Neighboring cells outside, but near a given cell, experience an adhesive force. The strengths of the forces are determined by the prefactors $F_{rep}^0$ and $F_{adh}^0$ and the effective separation of the adhesive force by the contact distance, $\epsilon$  (Not illustrated to scale).}
+  \label{fig:interaction}
 \end{figure}
 
 % Physical system (Boundaries, packing fraction) %
 
-\subsection*{System Conditions}
+\subsection{System Conditions}
 We have imposed `hard' barrier boundaries on the system to imitate the conditions of confining microfluidic shells used in the experiments \cite{Mingming}. 
 This means that particles may move along or within a specified radius, but are restricted from moving outside of it. We begin each simulation with an initial configuration 
 where the two species are intermixed and the cells are randomly and uniformly distributed inside of the confining sphere. The size of the system is dependent on the 
-packing fraction of the system. For our simulations, we choose a packing fraction of $\phi=0.4$ for each cell type, which is where active colloidal systems have been 
-studied in the past\cite{RednerBaskaran}, and found to form a nearly confluent system at long times. See FIG. \ref{fig:3dconf} for a sample three dimensional system.
+packing fraction of the system. In our simulations, we have studied multiple packing fractions from $\phi=0.4$ to $\phi=0.9$ for each cell type. Unless otherwise mentioned, the results shown here were obtained
+for a binary system with packing fraction $\phi=0.7$ for each species which is where active colloidal systems have been studied in the past\cite{RednerBaskaran}, and found to form a nearly confluent system at long times. 
+See FIG. \ref{fig:3dconf} for a sample three dimensional system.
 
 
 % Technical stuff %
 \section{Numerical Methods}
 
 The dynamics simulations are computed in Julia, a high-performance, dynamic 
-programming language for scientific computing. Spatial cell hashing and neighbor 
-checking was used for broad phase collision detection to linearize run times 
-as a function of the number of total particles. The simulations use a foreward 
+programming language for scientific computing \cite{Bezanson1,Bezanson2}.
+The code was documented and published using Sphinx \cite{RTD} and the source released on Github \cite{github}.
+
+Spatial cell hashing and neighbor checking was used for broad phase collision detection to linearize run times 
+as a function of the number of total particles. The simulations use a forward 
 Euler method to integrate with time steps between $10^{-4}\tau$ and $10^{-6}\tau$.
-Ten identical runs, reach for a different random initial configuration of cells, were run in parallel for each simulation
-and averaged together to produce Mean Square Displacement (MSD) data for a given set of parameters.
+
+One common measurement made by experementalists on tracking data of cells is the mean squared displacement (MSD).
+It is given as:
+
+\begin{equation}
+  MSD \equiv <(x(t) - x(0))^2>
+\end{equation}
+
+I also use this measurement to analyze the motility of the different cell types in the simulation.
+
+The differential adhesion hypothosis is that the intercellular adhesion varies depending on the presence of cadherins.
+When the the level of cadherin expression is increased, it is found that the size of the aggregating clumps increased \cite{Foty}.
+To measure the size of the cluming that occured in the model, I used DBSCAN, a common clustering algorithm used in machine learning \cite{Ester}. 
+It works by choosing random points in the data, then searching for neighboring points a specified distance away.
+This process repeats on all neighboring points found in the initial point.
+The result is a number of clusters of different sizes.
+For results here, it was chosen that any point $1.1\sigma$ from another point was to be considered a neighbor.
 
 \section{Results}
 
 \subsection{Brownian Diffusion}
 According to Einstein's theory of brownian motion, it is expected that the mean
-square displacement of a particle undergoing Brownian motion in three dimensions should evolve proportional to the time, with a proportionality constant $6 D$, where $D$ is the diffusion constant. In our non-dimensionalized model, this constant pre-actor should be $6$. We used this fact to confirm that the dynamics of the simulation were working properly. To test this, all interaction and propulsive forces were turned off and the system was evolved only under brownian forces. Ten identical simulations were run and averaged to produce FIG. \ref{fig:brownianMSD}. The slope is very nearly the expected value and will be exact for larger numbers of trial runs and larger system sizes.
+squared displacement of a particle undergoing Brownian motion in three dimensions should evolve proportional to the time, with a proportionality constant $6 D$, where $D$ is the diffusion constant. In our non-dimensionalized model, this constant pre-actor should be $6$. We used this fact to confirm that the dynamics of the simulation were working properly. To test this, all interaction and propulsive forces were turned off and the system was evolved only under brownian forces. Ten identical simulations were run and averaged to produce FIG. \ref{fig:brownianMSD}. The slope is very nearly the expected value and will be exact for larger numbers of trial runs and larger system sizes.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{brownianMSD.png}
+  \includegraphics[width=\columnwidth]{images/brownianMSD.png}
   \caption[brownianMSD]
     {MSD for a single species system under only brownian forces. The MSD evolves nearly as $6Dt$ as expected from Einstein's theory of brownian motion. The time is expressed in units of $\tau$, and MSD is expressed
     in units of $\sigma^2$ defined earlier.}
@@ -250,14 +287,14 @@ in the experiments, we are able to qualitatively replicate this using our model.
 \begin{figure*}
   \centering
   \begin{subfigure}[t]{1.0\textwidth}
-    \includegraphics[width=\textwidth]{experimental.png}
+    \includegraphics[width=\textwidth]{images/experimental.png}
   \end{subfigure}
   \begin{subfigure}[t]{1.0\textwidth}
-    \includegraphics[width=\textwidth]{separation.png}
+    \includegraphics[width=\textwidth]{images/separation.png}
   \end{subfigure}
   \caption[separation]{Time evolution of the co-culture model of the cancer cells (Blue) and the healthy cells (Red) over a timescale of the order of seconds. The system evolves (left to right) from an initial, random state (left) towards a segregated state (right).}
    \label{fig:separation}
-\end{figure}
+\end{figure*}
 
 We start with an initial random and uniform distribution of the two cells types consisting of  
 equal number of cells for each type. As described before, the cancer cells experience an elastic
@@ -271,55 +308,103 @@ corresponding to a few seconds. To be able to compare with the experiments more 
 of our system over an experimental timescale of the order of at least a week. This is currently underway. 
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{cocultureMSD.png}
+  \includegraphics[width=\columnwidth]{images/cocultureMSD.png}
   \caption[cocultureMSD]
     {The MSD for a co-culture, cancerous-healthy cell system. The cancerous cells
     are observed to be much more motile than the healthy cells, and their MSD has a larger slope. The time is expressed in units of $\tau$, and MSD is expressed
     in units of $\sigma^2$ defined earlier. This result is
-    similiar to those of the two dimensional case\cite{Butcher}.}
+    similar to those of the two dimensional case\cite{Butcher}.}
   \label{fig:cocultureMSD}
 \end{figure}
 
 \subsection{Differential Migration}
 One case that was investigated closely in the two-dimensional model was a co-culture system with healthy, adhesive cells, and cancerous, propulsive cells with an elasticity 
 difference of one order. As in the two-dimensional case, we find that in the three dimensional co-culture, the cancerous cells migrated faster than the healthy cells. This is represented by the larger
-slope of the mean square displacement (MSD) vs time, for the cancer cells compared to the healthy cells. (See FIG. \ref{fig:cocultureMSD}).
+slope of the mean squared displacement (MSD) vs time, for the cancer cells compared to the healthy cells. (See FIG. \ref{fig:cocultureMSD}).
 
-\subsection{Size Dependence}
+\subsection{Towards constructing a phase diagram}
 
-Due to the difficulty of the simulation, a system comparable to the systems produced in the lab consisting of millions of cells is not feasable.
-Instead, a much smaller system (512-1024 cells) was needed to produce results in a reasonable fashion.
-I ran the model under similar conditions for different quantities of cells to determine what considerations to make when comparing my model to experimental results from colaborators.
+Due to the difficulty of the simulation, a system comparable to the systems produced in the lab consisting of millions of cells is not feasible.
+Instead, a much smaller system (512-1024 cells) was needed to produce results in a reasonable fashion. I ran the model under similar conditions for different quantities of cells to 
+determine what considerations to make when comparing my model to experimental results from our experimental collaborators. Our final goal is to construct a multi-dimensional phase diagram. 
+A full phase diagram is outside the scope of this report for lack of time. Below I have described my observations of the dependence of the emergent properties of the system on important constitutive 
+physical properties of the cells that can form the axes of this digram.
 
-\subsection{Packing Fraction Dependence}
+\subsubsection{Packing Fraction}
 
 The critical packing fraction for solid spheres where the system becomes jammed is $0.74$.
-Given that the model consists of deformable spheres as opposed to solid spheres, it was expected that the reach a critical packing fraction obove $0.74$ and show significantly reduced motility in both species.
+Given that the model consists of deformable spheres as opposed to solid spheres, it was expected that the reach a critical packing fraction above $0.74$ and show significantly reduced motility in both species.
 
+FIG. \ref{fig:phi}
 
-\subsection{Stiffness Dependence}
+\begin{figure}[h!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!] % :(
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/phi04.png}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/phi95.png}
+  \end{subfigure}
+  \caption{The pacing fraction at two extremes: $\phi=0.4$ (top) and $\phi=0.95$ (bottom).}
+  \label{fig:phi}
+\end{figure}
+
+\subsubsection{Stiffness}
 
 One motivating hypothesis behind this model was that the difference in cell elasticity caused a mismatch in motility of the two cell species.
 The model was run for several different ratios of stiffness between the two cells ranging up to three orders difference between the two.
 
-\subsection{Adhesive Dependence}
+\subsubsection{Cell-cell adhesion}
 
-\subsection{Propulsion Dependence}
+There are two parameters that affect the adhesive force of the healthy cells in the model.
+The first is the magnitude of the force.
+This is the prefactor that scales the force similiar to the repulive force.
+The second is the contact distance of the adhesive force, $\epsilon$.
+This is how far the bottom of the well is from the edge of the cell (See FIG. \ref{fig:interaction}).
 
+The strength of the adhesive force was varied for the healhy cells from $10$ to $1000$ in the dimensionless units with a contact distance of $0.2$.
+The resulting behaviors did not vary with respect to the MSD or clustering of the healthy particles.
+The contact distance was also varied with a set adhesive strength of $1500$.
+This resulted in many more clusters being formed and a decrease in the motility of the healthy cell species.
 
-
-\section*{Conclusions}
-We have constructed a simple proof-of-concept cell co-culture model to test the hypothesis that differences in physical properties of cells in close proximity in a co-culture can influence emergent collective properties such as migration
-and segregation. Our preliminary results indicate that this is indeed true.
-During the next semester we will examine the full phase diagram of this system.
-We will study MSD (migration), and segregation in a multi-dimensional phase space made of three physical parameters -- ratio of stiffness of the two cell types, self-propulsion of the cancer cells, and cell-cell adhesion strength of the healthy cells.
-We will work closely with our experimental colleagues to identify experimentally accessible and physiologically relevant regimes in this phase diagram.
-We will also add the two more components -- the presence of the ECM and cell division -- to our model that may be important for the cell segregation and migration observed in experiments.
-The ECM is an important constituent of the experimental microcapsules, and we will model it has a disordered potential  (See FIG. \ref{fig:capsuleECM}).
-The drastic difference in cell division rates between cancer cells and healthy cells may be crucial to the experimentally observed collective behavior of the system over the timescales (of the order of weeks) the system is monitored, and will be included by allowing for cells to divide into two following local rules. 
 
 \begin{figure}
-  \includegraphics[width=0.9\columnwidth]{Fig2.png}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/contact1.png}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/contact2.png}
+  \end{subfigure}
+  \caption{Number of clusters for different effective distances of the adhesive force ($\epsilon$). The top figure shows only a few small clusters exist for low effective distances ($\epsilon=0.1$) while the bottom shows that larger clusters are more likely to exist for larger effective distances ($\epsilon=1.0$).}
+  \label{fig:contact}
+\end{figure}
+
+
+\subsubsection{Self-propulsion speed}
+
+FIG. \ref{fig:prop}
+
+\begin{figure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/pe1.png}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{images/pe1000.png}
+  \end{subfigure}
+  \caption{The MSD for two different peclet numbers ($Pe$). The top, $Pe=1$, shows that cancerous and healthy cells have similiar migratory behavior when the cancerous cells have little self propulsion. The bottom, $Pe=1000$, shows that cancer cells will be much more motile ot begin, then reach a limit (when they are constrained by the boundaries).}
+  \label{fig:prop}
+\end{figure}
+
+\subsubsection{Physiological Parameters}
+
+
+
+\section{Conclusions}
+We have constructed a simple proof-of-concept cell co-culture model to test the hypothesis that differences in physical properties of cells in close proximity in a co-culture can influence emergent collective properties such as migration
+and segregation.
+Our preliminary results indicate that this is indeed true.
+
+\begin{figure}
+  \includegraphics[width=0.9\columnwidth]{images/Fig2.png}
   \caption[capsuleECM]
    {A cross section of a spherical capsule enclosing a binary mixture of cells and an extracellular matrix.}
    \label{fig:capsuleECM}
@@ -333,6 +418,12 @@ The extracellular matrix (ECM) is a structural network of fibers that surrounds 
 Most healthy cells adhere to the ECM and move along it in a manner mimicking one-dimensional motion \cite{Cukierman}.
 Migration speed of cells in this manner has been observed to be significantly higher than on two dimensional surfaces \cite{Doyle}.
 Considering the ECM and the interaction of cells with the ECM will thus be very important in the development of our three-dimensional model.
+
+\subsection{Mitosis}
+
+The time scales that the migratory and segratory behavior is observed at is on the order of weeks \cite{Mingming}.
+That time is sufficient enough for cell to divide several times and could have important effects on the behavior of the system.
+The model could be made more sophisticated by accounting for cell division by duplicating cells after a specified period.
 
 \begin{acknowledgments}
 Many thanks to: Dr. Moumita Das for her mentorship and inputs, Julian Butcher for useful discussions, Drs. Minglin Ma and Mingming Wu for their collaboration and discussions, 
