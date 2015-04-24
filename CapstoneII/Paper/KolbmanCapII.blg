@@ -3,46 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: KolbmanCapII.aux
 The style file: h-physrev5.bst.bst
 Database file #1: DanKolbmanBibliographyFile.bib
-Warning--I didn't find a database entry for ""
-You've used 22 entries,
+Warning--I didn't find a database entry for "hertz"
+You've used 26 entries,
             1973 wiz_defined-function locations,
-            768 strings with 8890 characters,
-and the built_in function-call counts, 4506 in all, are:
-= -- 276
-> -- 262
+            803 strings with 9804 characters,
+and the built_in function-call counts, 5366 in all, are:
+= -- 334
+> -- 301
 < -- 2
-+ -- 85
-- -- 59
-* -- 359
-:= -- 598
-add.period$ -- 22
-call.type$ -- 22
++ -- 98
+- -- 67
+* -- 430
+:= -- 705
+add.period$ -- 26
+call.type$ -- 26
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 232
-empty$ -- 470
-format.name$ -- 81
-if$ -- 1050
+cite$ -- 26
+duplicate$ -- 276
+empty$ -- 563
+format.name$ -- 93
+if$ -- 1256
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 23
-newline$ -- 91
-num.names$ -- 22
-pop$ -- 109
+int.to.str$ -- 26
+missing$ -- 27
+newline$ -- 107
+num.names$ -- 26
+pop$ -- 124
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 211
+skip$ -- 256
 stack$ -- 0
-substring$ -- 207
-swap$ -- 59
+substring$ -- 262
+swap$ -- 71
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 37
-width$ -- 24
-write$ -- 158
+while$ -- 45
+width$ -- 28
+write$ -- 188
 (There was 1 warning)

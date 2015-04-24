@@ -4,6 +4,10 @@
 M.-H. Lee {\em et~al.},
 \newblock Biophysical Journal {\bf 102}, 2731  (2012).
 
+\bibitem{Suresh}
+S.~Suresh,
+\newblock Acta Mater. {\bf 55}, 3989–4014 (2007).
+
 \bibitem{Mingming}
 M.~Wu and M.~Ma,
 \newblock Private communications  (2014).
@@ -21,9 +25,9 @@ K.~Alessandri {\em et~al.},
 J.~Butcher and M.~Das,
 \newblock Capstone 2014  (2014).
 
-\bibitem{Suresh}
-S.~Suresh,
-\newblock Acta Mater. {\bf 55}, 3989–4014 (2007).
+\bibitem{Lu}
+Y.-C. Lu {\em et~al.},
+\newblock J. Mater. Chem. B {\bf 3}, 353 (2015).
 
 \bibitem{Jeanes}
 A.~Jeanes, C.~J. Gottardi, and A.~S. Yap,
@@ -35,6 +39,11 @@ A.~Jeanes, C.~J. Gottardi, and A.~S. Yap,
 E.~Cukierman, R.~Pankov, D.~R. Stevens, and K.~M. Yamada,
 \newblock Science {\bf 294}, 1708 (2001),
   http://www.sciencemag.org/content/294/5547/1708.full.pdf.
+
+\bibitem{zaman}
+M.~H. Zaman {\em et~al.},
+\newblock Proceedings of the National Academy of Sciences {\bf 103}, 10889
+  (2006), http://www.pnas.org/content/103/29/10889.full.pdf.
 
 \bibitem{FilyMarchetti}
 Y.~Fily and M.~C. Marchetti,
@@ -51,6 +60,14 @@ T.~Vicsek, A.~Czir\'ok, E.~Ben-Jacob, I.~Cohen, and O.~Shochet,
 \bibitem{Lemons}
 D.~S. Lemons and A.~Gythiel,
 \newblock American Journal of Physics {\bf 65}, 1079 (1997).
+
+\bibitem{kubo}
+R.~KUBO,
+\newblock {REPORTS ON PROGRESS IN PHYSICS} {\bf {29}}, {255 ({1966}).
+
+\bibitem{RednerHagan}
+G.~S. Redner, M.~F. Hagan, and A.~Baskaran,
+\newblock Phys. Rev. Lett. {\bf 110}, 055701 (2013).
 
 \bibitem{Bezanson1}
 V.~B. Shah, A.~Edelman, S.~Karpinski, J.~Bezanson, and J.~Kepner,
@@ -79,14 +96,15 @@ R.~A. Foty and M.~S. Steinberg,
 M.~Ester, H.~peter Kriegel, J.~S, and X.~Xu,
 \newblock p. 226 (1996).
 
-\bibitem{Lu}
-Y.-C. Lu {\em et~al.},
-\newblock J. Mater. Chem. B {\bf 3}, 353 (2015).
-
 \bibitem{Alberts}
 B.~Alberts {\em et~al.},
 \newblock {\em Molecular Biology of the Cell} (Garland Science, New York,
   1995).
+
+\bibitem{Friedl}
+P.~Friedl and K.~Wolf,
+\newblock The Journal of Cell Biology {\bf 188}, 11 (2010),
+  http://jcb.rupress.org/content/188/1/11.full.pdf+html.
 
 \bibitem{Doyle}
 A.~D. Doyle, F.~W. Wang, K.~Matsumoto, and K.~M. Yamada,
